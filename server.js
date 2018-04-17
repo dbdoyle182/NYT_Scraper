@@ -23,6 +23,12 @@ app.set('view engine', 'handlebars');
 // Sets up the static directory
 app.use(express.static('public'));
 
+// Import router
+
+var htmlRoutes = require('./controllers/htmlController.js');
+
+app.use(htmlRoutes)
+
 app.listen(PORT, function() {
     console.log('Server listening on: http://localhost:' + PORT)
 })
