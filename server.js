@@ -2,11 +2,26 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
+var logger = require('morgan');
+var mongoose = require('mongoose')
 
 // Setting up express app
-
+var db = require('./models')
 var PORT = process.env.PORT || 8080;
 var app = express();
+
+
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+// Set mongoose to leverage built in JavaScript ES6 Promises
+// Connect to the Mongo DB
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
+
+// Use morgan logger for logging requests
+
+app.use(logger('dev'));
 
 // Sets up express to use body parser
 
@@ -26,8 +41,10 @@ app.use(express.static('public'));
 // Import router
 
 var htmlRoutes = require('./controllers/htmlController.js');
+var scraper = require('./controllers/scraper.js')
+app.use(htmlRoutes);
+app.use(scraper);
 
-app.use(htmlRoutes)
 
 app.listen(PORT, function() {
     console.log('Server listening on: http://localhost:' + PORT)
