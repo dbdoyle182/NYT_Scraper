@@ -19,7 +19,12 @@ router.get('/scrape', function(req, res) {
             result.author = $(this).children('p.byline').text().trim();
             result.summary = $(this).children('p.summary').text().trim();
             
-
+            if (result.author === '') {
+                result.author = 'No author provided for this article'
+            }
+            if (result.summary === '') {
+                result.summary = 'No summary provided for this article'
+            }
             db.Article.create(result).then(function(result) {
 
             }).catch(function(err) {

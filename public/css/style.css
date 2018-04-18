@@ -1,11 +1,7 @@
-nav {
-    height: 200px
+body {
+    background-image: url('/images/paper2.jpg');
 }
 
-a.brand-logo.center {
-    padding: 5%
-}
-
-#nav-mobile {
-    padding-top: 5%;
+div.nav-wrapper {
+    background-color: darkblue;
 }

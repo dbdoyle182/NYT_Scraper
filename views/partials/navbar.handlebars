@@ -1,10 +1,20 @@
-<nav>
+<div class="navbar-fixed">  
+  <nav>
     <div class="nav-wrapper">
-        <a href="/" class="brand-logo center">NYT Scraper</a>
-        <ul id="nav-mobile">
+      <a href="/" class="brand-logo">NYT Scraper</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
         <li><a href="/saved">Saved</a></li>
-        <li><button id='scrape' href='/scrape'>Get new articles</button></li>
-        </ul>
+        <li><a href="/scrape" id="scrape">Get new Articles</a></li>
+      </ul>
     </div>
-</nav>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="/saved">Saved</a></li>
+    <li><button class="btn" id="scrape">Get new Articles</button></li>
+  </ul>
+</div>
+
+
 

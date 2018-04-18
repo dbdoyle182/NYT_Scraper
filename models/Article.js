@@ -19,13 +19,11 @@ var ArticleSchema = new Schema({
 
     author: {
         type: String,
-        required: true,
         default: 'No Author Available'
     },
 
     summary: {
         type: String,
-        required: true,
         default: 'No summary provided'
     },
 

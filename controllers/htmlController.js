@@ -3,10 +3,9 @@ var db = require('../models')
 var router = express.Router();
 
 router.get('/', function(req, res) {
-    db.Article.find({})
+    db.Article.find({}).sort({_id: 1})
     .then(function(result) {
         res.render('index', {article: result})
-        console.log(result)
     })
     .catch(function(err) {
         res.json(err)
