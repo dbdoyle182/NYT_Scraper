@@ -1,3 +1,4 @@
+
 // Allows get new articles button to perform scraping
 
 document.getElementById('scrape').addEventListener('click', function() { 
@@ -19,6 +20,35 @@ var instance = M.FloatingActionButton.init(elem, {
   direction: 'left',
   hoverEnabled: false
 });
+
+$(document).on('click','#savebtn', function() {
+
+    var id = $(this).data('id');
+    $.ajax({
+        method: 'POST',
+        url: '/article/' + id,
+        data: {
+            saved: true
+        }
+    }).then(function(data) {
+        window.location.reload();
+    });
+})
+
+$(document).on('click','#deletebtn', function() {
+
+    var id = $(this).data('id');
+    $.ajax({
+        method: 'POST',
+        url: '/article/' + id,
+        data: {
+            saved: false
+        }
+    }).then(function(data) {
+        window.location.reload();
+
+    });
+})
 
 
 
