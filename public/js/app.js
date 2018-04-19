@@ -26,7 +26,7 @@ $(document).on('click','#savebtn', function() {
     var id = $(this).data('id');
     $.ajax({
         method: 'POST',
-        url: '/article/' + id,
+        url: '/saved/' + id,
         data: {
             saved: true
         }
@@ -40,7 +40,7 @@ $(document).on('click','#deletebtn', function() {
     var id = $(this).data('id');
     $.ajax({
         method: 'POST',
-        url: '/article/' + id,
+        url: '/saved/' + id,
         data: {
             saved: false
         }
